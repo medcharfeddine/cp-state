@@ -31,12 +31,14 @@ export default class App extends Component {
     clearInterval(this.interval);
   }
 
+  imgStyle = { width: "250px", height: "250px" };
+
   render() {
     const currentTime = new Date();
     const elapsedTime = Math.floor((currentTime - this.state.mountedAt) / 1000);
 
     return (
-      <div>
+      <div className="App">
         <button onClick={this.toggleShow}>
           {this.state.shows ? "Hide Profile" : "Show Profile"}
         </button>
@@ -44,7 +46,11 @@ export default class App extends Component {
           <div>
             <h2>{this.state.person.fullName}</h2>
             <p>{this.state.person.bio}</p>
-            <img src={this.state.person.imgSrc} alt="Me" />
+            <img
+              style={this.imgStyle}
+              src={this.state.person.imgSrc}
+              alt="Me"
+            />
             <p>{this.state.person.profession}</p>
             <p>Component mounted {elapsedTime} seconds ago</p>
           </div>
